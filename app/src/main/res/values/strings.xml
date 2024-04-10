@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Wizard</string>
+    <string name="welcome"> Bienvenido</string>
+    <string name="description">¡Empieza a registrar tus apuestas!</string>
+    <string name="inicio_sesion">Inicio de sesión</string>
+    <string name="registro">Registro</string>
 </resources>
