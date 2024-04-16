@@ -3,15 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFragment">
+    android:background="@color/main_black"
+    tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/all_leagues"
+        android:layout_width="226dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="50sp"
+        android:fontFamily="@font/inter"
+        android:text="@string/all_leagues"
+        android:textColor="@color/texts"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_add_fragment"
-        android:textSize="40sp"
-        android:textColor="@color/purple"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:layout_marginTop="105sp">
+
+    </LinearLayout>
 
 </FrameLayout>

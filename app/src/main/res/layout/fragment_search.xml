@@ -3,15 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_black"
     tools:context=".SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/search"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="50sp"
+        android:fontFamily="@font/inter"
+        android:text="@string/search"
+        android:textColor="@color/texts"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="343dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="28sp"
+        android:layout_marginTop="105dp"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/usuario"
+        android:padding="10dp"
+        android:textColorHint="@color/text_secondary" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_search_fragment"
-        android:textSize="40sp"
-        android:textColor="@color/purple"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:layout_marginTop="155sp"
+        >
+    </LinearLayout>
+
 
 </FrameLayout>
