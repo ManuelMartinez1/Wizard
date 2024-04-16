@@ -1,49 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/main_black"
-    tools:context=".Home">
+    tools:context=".view.SearchFragment">
+
 
     <TextView
         android:id="@+id/home"
         android:layout_width="159dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30sp"
-        android:layout_marginTop="50sp"
-        android:fontFamily="@font/inter"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/inter_bold"
         android:text="@string/home"
         android:textColor="@color/texts"
-        android:textSize="32sp"
-        android:textStyle="bold" />
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/games_today"
         android:layout_width="327dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30sp"
-        android:layout_marginTop="100sp"
-        android:fontFamily="@font/inter"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/inter_bold"
         android:text="@string/games_today"
         android:textColor="@color/texts"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.297"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="386dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="104dp"
-        android:layout_marginTop="140sp"
-        android:orientation="horizontal">
+        android:id="@+id/linearLayout2"
+        android:layout_width="360dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="304dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="581dp"
-        android:layout_marginTop="250sp"
-        android:orientation="vertical" >
 
-    </LinearLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

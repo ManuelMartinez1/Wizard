@@ -1,0 +1,39 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="353dp"
+    android:layout_height="100dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Fondo del evento -->
+    <ImageView
+        android:id="@+id/eventBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/event_background"/>
+
+    <!-- Contenido del evento -->
+    <TextView
+        android:id="@+id/eventTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/sport"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/inter"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="8dp"
+        android:textSize="10sp"
+        android:text="@string/sport"
+        android:textColor="@android:color/white" />
+
+
+
+
+</FrameLayout>

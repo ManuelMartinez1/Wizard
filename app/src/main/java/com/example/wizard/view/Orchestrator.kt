@@ -1,4 +1,4 @@
-package com.example.wizard
+package com.example.wizard.view
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.wizard.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Orchestrator : AppCompatActivity() {
@@ -29,7 +30,15 @@ class Orchestrator : AppCompatActivity() {
                 }
 
                 R.id.plus -> {
-                    replaceFragment(AddFragment())
+                    val addFragment = AddFragment()
+
+                    // Crear un Bundle y pasar argumentos
+                    val bundle = Bundle()
+                    bundle.putString("key", "value")
+                    addFragment.arguments = bundle
+
+                    // Reemplazar el fragmento actual con AddFragment
+                    replaceFragment(addFragment)
                     true
                 }
 

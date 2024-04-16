@@ -8,7 +8,7 @@
     <string name="games_today">Games today</string>
     <string name="usuario">Username</string>
     <string name="contrasena">Contraseña</string>
-    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="login">Log in</string>
     <string name="signup">Sign up</string>
     <string name="nombre">Nombre</string>
@@ -18,13 +18,21 @@
     <string name="registrarme">Registrarme</string>
     <string name="fecha_nacimiento">Fecha de nacimiento</string>
     <string name="search">Search</string>
-    <string name="notification">Notification</string>
+    <string name="notification">Notices</string>
     <string name="profile">Profile</string>
+    <string name="nombre_completo">Nombre completo</string>
     <string name="all_leagues">All leagues</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="bets">Bets</string>
+    <string name="number">00</string>
+    <string name="inicial_perfil">M</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_search_fragment">Hello search fragment</string>
     <string name="hello_add_fragment">Hello add fragment</string>
     <string name="hello_notifications_fragment">Hello notifications fragment</string>
     <string name="hello_profile_fragment">Hello profile fragment</string>
     <string name="hello_home_fragment">Hello Home fragment</string>
+    <string name="apikey">93431bcf5f7d7994a9a97f41af907539</string>
+    <string name="sport">League</string>
 </resources>

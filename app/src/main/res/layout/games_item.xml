@@ -1,0 +1,39 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="120dp"
+    android:layout_marginEnd="15dp">
+
+    <!-- Fondo del evento -->
+    <ImageView
+        android:id="@+id/games_today"
+        android:layout_width="80dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="18dp"
+        android:src="@drawable/games_circle" />
+
+    <!-- Contenido del evento -->
+    <TextView
+        android:id="@+id/sport"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="72dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="NBA"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/games"
+        android:layout_width="80dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="102dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="5 games"
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
+
+
+</FrameLayout>

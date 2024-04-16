@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="235dp"
+    android:layout_marginEnd="10dp">
+
+    <!-- Fondo del evento -->
+    <ImageView
+        android:id="@+id/post"
+        android:layout_width="360dp"
+        android:layout_height="235dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/post_background" />
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/profile_circle" />
+
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_vertical"
+        android:text="Lana del Rey"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/timestamp"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="22dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter"
+        android:gravity="center_vertical|end"
+        android:text="20min"
+        android:textColor="@android:color/white" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="65dp"
+        android:background="@color/cardview_dark_background" />
+
+    <TextView
+        android:id="@+id/apuesta"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter"
+        android:gravity="center_vertical"
+        android:text="Total (incl. Overtime)"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/equipos"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_vertical"
+        android:text="Orlando Magic - Brooklyn Nets"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/momio"
+        android:layout_width="230dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="130dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/inter"
+        android:gravity="center_vertical"
+        android:text="Under (-8.5)"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="165dp"
+        android:src="@drawable/recuadro" />
+
+
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="165dp"
+        android:src="@drawable/recuadro" />
+
+
+
+</FrameLayout>

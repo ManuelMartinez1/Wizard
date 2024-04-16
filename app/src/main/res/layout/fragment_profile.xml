@@ -1,17 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    android:background="@color/main_black"
+    tools:context=".view.Home">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_profile_fragment"
-        android:textSize="40sp"
-        android:textColor="@color/purple"
-        android:gravity="center"/>
+        android:id="@+id/profile"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/profile"
+        android:textColor="@color/texts"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@drawable/profile_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.144" />
+
+    <TextView
+        android:id="@+id/inicial_perfil"
+        android:layout_width="39dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="@string/inicial_perfil"
+        android:textColor="@color/main_black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/nombre_completo"
+        android:layout_width="272dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="188dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/nombre_completo"
+        android:textColor="@color/texts"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.223"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/followingc"
+        android:layout_width="65dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="136dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="@string/number"
+        android:textColor="@color/texts"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/following"
+        app:layout_constraintEnd_toStartOf="@+id/followersc"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_default="wrap" />
+
+    <TextView
+        android:id="@+id/betsc"
+        android:layout_width="65dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="136dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="@string/number"
+        android:textColor="@color/texts"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/followingc"
+        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="wrap" />
+
+    <TextView
+        android:id="@+id/followers"
+        android:layout_width="65dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="@string/followers"
+        android:textColor="@color/texts"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="wrap" />
+
+    <TextView
+        android:id="@+id/bets"
+        android:layout_width="65dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="@string/bets"
+        android:textColor="@color/texts"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/following"
+        app:layout_constraintHorizontal_bias="0.794"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="wrap" />
+
+    <TextView
+        android:id="@+id/following"
+        android:layout_width="65dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="28dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="@string/following"
+        android:textColor="@color/texts"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/followers"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="wrap" />
+
+    <TextView
+        android:id="@+id/followersc"
+        android:layout_width="65dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="@string/number"
+        android:textColor="@color/texts"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/followers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintWidth_default="wrap" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

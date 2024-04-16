@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Orchestrator">
+    tools:context=".view.Orchestrator">
 
     <FrameLayout
         android:id="@+id/frame_container"
@@ -16,13 +16,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="394dp"
-        android:layout_height="75dp"
+        android:layout_width="413dp"
+        android:layout_height="72dp"
         android:background="@color/main_black"
         app:itemIconSize="32dp"
+        app:itemIconTint="@color/texts"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:itemIconTint="@color/texts"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bar" />

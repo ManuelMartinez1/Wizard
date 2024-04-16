@@ -1,9 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Wizard" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/main_black</item>
+    </style>
+    <style name="LaunchTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@color/main_black</item>
     </style>
 
     <style name="Theme.Wizard" parent="Base.Theme.Wizard" />
+
+    <style name="SportButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@null</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
 </resources>

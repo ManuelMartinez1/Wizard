@@ -8,4 +8,6 @@
     <color name="text_secondary">#C0C0C0</color>
     <color name="purple">#9412E5</color>
     <color name="button_black">#100C08</color>
+    <color name="event_background_color">#2A282A</color>
+    <color name="recuadro">#373437</color>
 </resources>

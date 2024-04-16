@@ -6,23 +6,23 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo_wizard"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo_wizard_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wizard"
         tools:targetApi="31">
         <activity
-            android:name=".Orchestrator"
+            android:name=".view.Orchestrator"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".view.SignUp"
             android:exported="false" />
         <activity
-            android:name=".LogIn"
+            android:name=".view.LogIn"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,5 +31,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>
