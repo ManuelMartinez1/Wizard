@@ -4,4 +4,26 @@
     <string name="description">¡Empieza a registrar tus apuestas!</string>
     <string name="inicio_sesion">Inicio de sesión</string>
     <string name="registro">Registro</string>
+    <string name="home">Home</string>
+    <string name="games_today">Games today</string>
+    <string name="usuario">Username</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="login">Log in</string>
+    <string name="signup">Sign up</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="email">Correo electrónico</string>
+    <string name="confirmar_contrasena">Confirmar constraseña</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="fecha_nacimiento">Fecha de nacimiento</string>
+    <string name="search">Search</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_search_fragment">Hello search fragment</string>
+    <string name="hello_add_fragment">Hello add fragment</string>
+    <string name="hello_notifications_fragment">Hello notifications fragment</string>
+    <string name="hello_profile_fragment">Hello profile fragment</string>
+    <string name="hello_home_fragment">Hello Home fragment</string>
 </resources>

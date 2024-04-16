@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="10dp" /> <!-- Adjust the radius as needed -->
-    <solid android:color="#383738" /> <!-- Background color of EditText -->
+    <solid android:color="@color/secondary_black" /> <!-- Background color of EditText -->
 </shape>

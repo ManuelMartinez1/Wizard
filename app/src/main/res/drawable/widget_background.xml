@@ -6,5 +6,5 @@
         android:topRightRadius="65dp"
         android:bottomLeftRadius="0dp"
         android:bottomRightRadius="0dp" /> <!-- Adjust the top radius as needed -->
-    <solid android:color="#383738" /> <!-- Background color of EditText -->
+    <solid android:color="@color/secondary_black" /> <!-- Background color of EditText -->
 </shape>

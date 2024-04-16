@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var  bottomNavigationView: BottomNavigationView
     private lateinit var loginButton: Button
     private lateinit var signupButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
