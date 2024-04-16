@@ -3,15 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_black"
     tools:context=".Home">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/home"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="50sp"
+        android:fontFamily="@font/inter"
+        android:text="@string/home"
+        android:textColor="@color/texts"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/games_today"
+        android:layout_width="327dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30sp"
+        android:layout_marginTop="100sp"
+        android:fontFamily="@font/inter"
+        android:text="@string/games_today"
+        android:textColor="@color/texts"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_notifications_fragment"
-        android:textSize="40sp"
-        android:textColor="@color/purple"
-        android:gravity="center"/>
+        android:layout_height="104dp"
+        android:layout_marginTop="140sp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="581dp"
+        android:layout_marginTop="250sp"
+        android:orientation="vertical" >
+
+    </LinearLayout>
 
 </FrameLayout>
