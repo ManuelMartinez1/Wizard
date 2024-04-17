@@ -1,5 +1,6 @@
 package com.example.wizard.presenter
 import com.example.wizard.model.Event
+import com.example.wizard.model.Match
 import com.example.wizard.view.Sport
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,6 +16,13 @@ interface oddsApiService {
         @Path("sport") sportKey: String,
         @Query("apiKey") apiKey: String
     ): Call<List<Event>>
+
+    @GET("v4/sports/{sport}/events/{eventId}/odds")
+    fun getEventById(
+        @Path("sport") sportKey: String,
+        @Path("event") eventKey: String,
+        @Query("apiKey") apiKey: String
+    ): Call<List<Match>>
 
 }
 

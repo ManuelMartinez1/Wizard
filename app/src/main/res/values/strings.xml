@@ -27,6 +27,8 @@
     <string name="bets">Bets</string>
     <string name="number">00</string>
     <string name="inicial_perfil">M</string>
+    <string name="league">NBA</string>
+    <string name="games_count">5 games</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_search_fragment">Hello search fragment</string>
     <string name="hello_add_fragment">Hello add fragment</string>
