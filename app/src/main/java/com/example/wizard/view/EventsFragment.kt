@@ -1,5 +1,8 @@
 package com.example.wizard.view
 
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -8,11 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.wizard.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wizard.model.Event
+import com.example.wizard.data.model.Event
 import com.example.wizard.presenter.oddsApiService
 import retrofit2.Call
 import retrofit2.Callback
@@ -54,6 +57,7 @@ class EventsFragment : Fragment() {
 
         return view
     }
+
 
     private fun obtenerEventosDesdeAPI(sportKey: String) {
 

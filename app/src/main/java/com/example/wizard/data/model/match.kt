@@ -1,4 +1,4 @@
-package com.example.wizard.model
+package com.example.wizard.data.model
 
 data class Match(
     val id: String,

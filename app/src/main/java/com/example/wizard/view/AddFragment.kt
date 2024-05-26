@@ -19,14 +19,12 @@ import android.graphics.Typeface
 import android.os.Build
 import android.widget.Button
 import androidx.annotation.RequiresApi
-import com.example.wizard.view.EventsFragment
 import androidx.core.content.res.ResourcesCompat
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import com.example.wizard.data.model.Sport
 
-data class Sport(
-    val title: String
-) {
-    val key: String = ""
-}
 
 class AddFragment : Fragment() {
 
@@ -83,7 +81,12 @@ class AddFragment : Fragment() {
                             sportButton.layoutParams = params
 
                             sportButton.setOnClickListener {
-                                navigateToEventsFragment(sport.key, sport.title)
+                                val activity = requireActivity()
+                                if (activity is AppCompatActivity) {
+                                    val fragmentManager = activity.supportFragmentManager
+                                    navigateToEventsFragment(fragmentManager, sport.key, sport.title)
+                                    Log.d("SPORT_CLICK", "Click en: ${sport.title} (${sport.key}).")
+                                }
                             }
 
                             sportsLayout?.addView(sportButton)
@@ -100,14 +103,13 @@ class AddFragment : Fragment() {
         })
     }
 
-    private fun navigateToEventsFragment(sportKey: String, sportTitle: String) {
+    private fun navigateToEventsFragment(fragmentManager: FragmentManager, sportKey: String, sportTitle: String) {
         val fragment = EventsFragment()
         val bundle = Bundle()
         bundle.putString("sportKey", sportKey)
         bundle.putString("title", sportTitle)
         fragment.arguments = bundle
 
-        val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_container, fragment)
         fragmentTransaction.addToBackStack(null)
@@ -120,3 +122,5 @@ class AddFragment : Fragment() {
 
 
 }
+
+

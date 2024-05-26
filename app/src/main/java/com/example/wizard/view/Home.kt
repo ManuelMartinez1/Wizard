@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.wizard.R
-import com.example.wizard.model.Event
+import com.example.wizard.data.model.Event
 import com.example.wizard.presenter.oddsApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.util.Log
+import com.example.wizard.data.model.Sport
 
 class Home : Fragment() {
     private lateinit var apiService: oddsApiService
@@ -57,17 +59,19 @@ class Home : Fragment() {
             override fun onResponse(call: Call<List<Sport>>, response: Response<List<Sport>>) {
                 if (response.isSuccessful) {
                     val sports = response.body() ?: emptyList()
-                    // Iterar sobre la lista de deportes y obtener los eventos para cada deporte
                     for (sport in sports) {
                         obtenerEventosPorDeporte(sport.key, sport.title)
                     }
+                    Log.d("API_RESPONSE", "Lista de deportes obtenida correctamente: $sports")
                 } else {
                     // Manejar error de respuesta
+                    Log.e("API_RESPONSE", "Error al obtener la lista de deportes: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<List<Sport>>, t: Throwable) {
                 // Manejar error de la llamada
+                Log.e("API_RESPONSE", "Error al obtener la lista de deportes: ${t.message}")
             }
         })
     }
@@ -80,18 +84,20 @@ class Home : Fragment() {
             override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
                 if (response.isSuccessful) {
                     val eventos = response.body() ?: emptyList()
-                    // Contar la cantidad de eventos para este deporte
                     val cantidadEventos = eventos.size
-                    // Mostrar los datos del deporte y la cantidad de eventos
                     mostrarDeporteYSusEventos(sportKey, sportTitle, cantidadEventos)
+                    Log.d("API_RESPONSE", "Eventos para el deporte $sportTitle obtenidos correctamente: $eventos")
                 } else {
                     // Manejar error de respuesta
+                    Log.e("API_RESPONSE", "Error al obtener eventos para el deporte $sportTitle: ${response.code()}")
                 }
             }
 
             override fun onFailure(call: Call<List<Event>>, t: Throwable) {
                 // Manejar error de la llamada
+                Log.e("API_RESPONSE", "Error al obtener eventos para el deporte $sportTitle: ${t.message}")
             }
+
         })
     }
 

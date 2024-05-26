@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wizard.R
-import com.example.wizard.model.Event
+import com.example.wizard.data.model.Event
 import java.text.SimpleDateFormat
 import java.util.Locale
 

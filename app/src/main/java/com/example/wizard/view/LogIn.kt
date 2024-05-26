@@ -80,6 +80,8 @@ class LogIn : AppCompatActivity() {
                     // Inicio de sesión fallido
                     Toast.makeText(this@LogIn, "Error al iniciar sesión: ${task.exception?.message}",
                         Toast.LENGTH_SHORT).show()
+
+
                 }
             }
     }
