@@ -33,7 +33,10 @@ class DataManager {
             override fun onResponse(call: Call<List<Sport>>, response: Response<List<Sport>>) {
                 if (response.isSuccessful) {
                     val sportsList = response.body()
-                    callback(sportsList, null)
+                    val filteredSports = sportsList?.filter { sport ->
+                        !sport.title.contains("winner", ignoreCase = true)
+                    }
+                    callback(filteredSports, null)
                 } else {
                     callback(null, Throwable("Error en la respuesta de la API"))
                 }
@@ -60,6 +63,6 @@ class DataManager {
             override fun onFailure(call: Call<List<Event>>, t: Throwable) {
                 callback(null, t)
             }
-            })
-        }
+        })
+    }
 }
