@@ -1,4 +1,4 @@
-package com.example.wizard.view
+package com.example.wizard.ui
 
 import android.os.Bundle
 import android.widget.Button
@@ -8,6 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Intent
 import com.example.wizard.R
+import com.example.wizard.ui.user.LogIn
+import com.example.wizard.ui.user.SignUp
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LogIn::class.java)
             startActivity(intent)
         }
-
 
         signupButton.setOnClickListener{
             val intent = Intent(this, SignUp::class.java)

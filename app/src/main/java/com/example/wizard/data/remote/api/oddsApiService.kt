@@ -1,4 +1,5 @@
-package com.example.wizard.presenter
+package com.example.wizard.data.remote.api
+
 import com.example.wizard.data.model.Event
 import com.example.wizard.data.model.EventOdds
 import com.example.wizard.data.model.Match
@@ -10,34 +11,26 @@ import retrofit2.http.Query
 
 interface oddsApiService {
     @GET("v4/sports")
-    fun getSports(@Query("apiKey") apiKey: String): Call<List<Sport>>
+    fun getSports(): Call<List<Sport>>
 
     @GET("v4/sports/{sport}/events")
     fun getEventsForSport(
-        @Path("sport") sportKey: String,
-        @Query("apiKey") apiKey: String
+        @Path("sport") sportKey: String
     ): Call<List<Event>>
 
     @GET("v4/sports/{sport}/events/{eventId}/odds")
     fun getEventById(
         @Path("sport") sportKey: String,
-        @Path("event") eventKey: String,
-        @Query("apiKey") apiKey: String
+        @Path("event") eventKey: String
     ): Call<List<Match>>
 
     @GET("/v4/sports/{sport}/events/{eventId}/odds")
     fun getEventOdds(
-        @Query("apiKey") apiKey: String,
+        @Path("sport") sportKey: String,
+        @Path("event") eventId: String,
         @Query("regions") regions: String,
         @Query("markets") markets: String,
         @Query("dateFormat") dateFormat: String,
-        @Query("oddsFormat") oddsFormat: String,
-        @Path("sport") sportKey: String,
-        @Path("event") eventId: String,
-    ): Call<EventOdds>
-
-    }
-
-
-
-
+        @Query("oddsFormat") oddsFormat: String
+    ):Call<EventOdds>
+}

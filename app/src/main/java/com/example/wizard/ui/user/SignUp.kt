@@ -1,4 +1,4 @@
-package com.example.wizard.view
+package com.example.wizard.ui.user
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wizard.R
+import com.example.wizard.ui.orchestrator.Orchestrator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 

@@ -1,4 +1,4 @@
-package com.example.wizard.view
+package com.example.wizard.ui.events
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

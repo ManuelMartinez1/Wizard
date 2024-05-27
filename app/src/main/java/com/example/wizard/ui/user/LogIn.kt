@@ -1,4 +1,4 @@
-package com.example.wizard.view
+package com.example.wizard.ui.user
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.wizard.R
+import com.example.wizard.ui.orchestrator.Orchestrator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -80,8 +81,6 @@ class LogIn : AppCompatActivity() {
                     // Inicio de sesión fallido
                     Toast.makeText(this@LogIn, "Error al iniciar sesión: ${task.exception?.message}",
                         Toast.LENGTH_SHORT).show()
-
-
                 }
             }
     }

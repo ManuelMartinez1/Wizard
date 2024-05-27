@@ -1,4 +1,4 @@
-package com.example.wizard.view
+package com.example.wizard.ui.orchestrator
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +7,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.wizard.R
+import com.example.wizard.ui.add.AddFragment
+import com.example.wizard.ui.home.HomeFragment
+import com.example.wizard.ui.notifications.NotificationsFragment
+import com.example.wizard.ui.profile.Profile
+import com.example.wizard.ui.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Orchestrator : AppCompatActivity() {
@@ -20,7 +25,7 @@ class Orchestrator : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.home -> {
-                    replaceFragment(Home())
+                    replaceFragment(HomeFragment())
                     true
                 }
 
@@ -43,7 +48,7 @@ class Orchestrator : AppCompatActivity() {
                 }
 
                 R.id.notifications -> {
-                    replaceFragment(Notifications())
+                    replaceFragment(NotificationsFragment())
                     true
                 }
 
@@ -54,7 +59,7 @@ class Orchestrator : AppCompatActivity() {
                 else -> false
             }
         }
-        replaceFragment(Home())
+        replaceFragment(HomeFragment())
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

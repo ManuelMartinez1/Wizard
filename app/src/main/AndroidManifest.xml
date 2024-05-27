@@ -13,16 +13,16 @@
         android:theme="@style/Theme.Wizard"
         tools:targetApi="31">
         <activity
-            android:name=".view.Orchestrator"
+            android:name=".ui.orchestrator.Orchestrator"
             android:exported="false" />
         <activity
-            android:name=".view.SignUp"
+            android:name=".ui.user.SignUp"
             android:exported="false" />
         <activity
-            android:name=".view.LogIn"
+            android:name=".ui.user.LogIn"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

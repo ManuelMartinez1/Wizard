@@ -1,8 +1,7 @@
-package com.example.wizard.view
+package com.example.wizard.ui.events
 
+import DataManager
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -11,22 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.wizard.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wizard.data.model.Event
-import com.example.wizard.presenter.oddsApiService
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+
 class EventsFragment : Fragment() {
 
     private lateinit var sportTextView: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventAdapter: EventAdapter
+    private lateinit var presenter: EventsPresenter
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -49,47 +43,33 @@ class EventsFragment : Fragment() {
         eventAdapter = EventAdapter(emptyList())
         recyclerView.adapter = eventAdapter
 
-        //sportKey
+        // Inicializar el Presenter
+        presenter = EventsPresenter(DataManager(), this)
+
+        // sportKey
         val sportKey = arguments?.getString("sportKey")
         if (!sportKey.isNullOrEmpty()) {
-            obtenerEventosDesdeAPI(sportKey)
+            presenter.loadEvents(sportKey)
         }
 
         return view
     }
 
-
-    private fun obtenerEventosDesdeAPI(sportKey: String) {
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.the-odds-api.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val service = retrofit.create(oddsApiService::class.java)
-        val apiKey = "93431bcf5f7d7994a9a97f41af907539"
-        val call = service.getEventsForSport(sportKey, apiKey)
-
-        call.enqueue(object : Callback<List<Event>> {
-            override fun onResponse(call: Call<List<Event>>, response: Response<List<Event>>) {
-                if (response.isSuccessful) {
-                    val events = response.body() ?: emptyList()
-                    updateEvents(events)
-                } else {
-
-                }
-            }
-
-            override fun onFailure(call: Call<List<Event>>, t: Throwable) {
-
-            }
-        })
+    fun showLoading() {
+        // Mostrar una indicación de carga
     }
 
-    // actualizar los eventos en el RecyclerView
-    private fun updateEvents(events: List<Event>) {
+    fun hideLoading() {
+        // Ocultar la indicación de carga
+    }
+
+    fun showEvents(events: List<Event>) {
         eventAdapter = EventAdapter(events)
         recyclerView.adapter = eventAdapter
     }
+
+    fun showError(message: String) {
+        // Mostrar un mensaje de error
+        }
 }
 
