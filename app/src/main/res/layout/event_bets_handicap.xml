@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="301dp"
+    android:layout_height="235dp">
+
+    <!-- Contenido del evento -->
+
+    <ImageView
+        android:id="@+id/winnerbetBackground"
+        android:layout_width="301dp"
+        android:layout_height="236dp"
+        android:background="@color/event_background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/eventTextView"
+        android:layout_width="68dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/sport"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/team1"
+        android:layout_width="68dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/sport"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/team2"
+        android:layout_width="68dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="@string/sport"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="@+id/winnerbetBackground"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toTopOf="@+id/winnerbetBackground"
+        app:layout_constraintVertical_bias="0.175" />
+
+    <include
+        android:id="@+id/betbtn1"
+        layout="@layout/custom_small_button"
+        android:layout_width="119dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <include
+        android:id="@+id/betbtn2"
+        layout="@layout/custom_small_button"
+        android:layout_width="119dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    <include
+        android:id="@+id/betbtn3"
+        layout="@layout/custom_small_button"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
+
+    <include
+        android:id="@+id/betbtn4"
+        layout="@layout/custom_small_button"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
+
+    <include
+        android:id="@+id/betbtn5"
+        layout="@layout/custom_small_button"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
+
+    <include
+        android:id="@+id/betbtn6"
+        layout="@layout/custom_small_button"
+        android:layout_width="119dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

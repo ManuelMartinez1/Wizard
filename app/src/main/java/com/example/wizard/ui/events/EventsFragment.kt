@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.FragmentManager
 import com.example.wizard.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wizard.data.model.Event
+import com.example.wizard.ui.bet.BetFragment
 
 class EventsFragment : Fragment() {
 
@@ -40,8 +42,6 @@ class EventsFragment : Fragment() {
         // Configurar RecyclerView
         recyclerView = view.findViewById(R.id.eventsRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        eventAdapter = EventAdapter(emptyList())
-        recyclerView.adapter = eventAdapter
 
         // Inicializar el Presenter
         presenter = EventsPresenter(DataManager(), this)
@@ -64,12 +64,26 @@ class EventsFragment : Fragment() {
     }
 
     fun showEvents(events: List<Event>) {
-        eventAdapter = EventAdapter(events)
+        eventAdapter = EventAdapter(events, parentFragmentManager)
         recyclerView.adapter = eventAdapter
     }
 
     fun showError(message: String) {
-        // Mostrar un mensaje de error
+        // Mostrar un mensaje de error
+    }
+
+    private fun navigateToBetFragment(fragmentManager: FragmentManager, eventId: String, eventTitle: String) {
+        val fragment = BetFragment()
+        val bundle = Bundle().apply {
+            putString("eventId", eventId)
+            putString("eventTitle", eventTitle)
         }
+        fragment.arguments = bundle
+
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_container, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
 }
 
