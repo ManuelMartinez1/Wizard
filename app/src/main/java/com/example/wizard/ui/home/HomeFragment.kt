@@ -42,9 +42,12 @@ class HomeFragment : Fragment(), HomeContract.View {
         presenter.onViewCreated()
     }
 
+
     override fun showSportsAndEventCounts(sports: List<Sport>) {
         adapter.submitList(sports)
     }
+
+
 
     override fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()

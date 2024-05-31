@@ -1,8 +1,10 @@
 package com.example.wizard.ui.orchestrator
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -22,7 +24,14 @@ class Orchestrator : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_orchestrator)
         bottomNavigationView = findViewById(R.id.bottom_navigation)
-        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+
+        val menu = bottomNavigationView.menu
+        val menuItem = menu.findItem(R.id.plus)
+
+        // Aplicar un filtro de color al ícono "plus"
+        menuItem.icon?.setColorFilter(ContextCompat.getColor(this, R.color.purple), PorterDuff.Mode.SRC_IN)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when(menuItem.itemId) {
                 R.id.home -> {
                     replaceFragment(HomeFragment())
@@ -35,6 +44,11 @@ class Orchestrator : AppCompatActivity() {
                 }
 
                 R.id.plus -> {
+                    val plusIcon = menuItem.icon
+
+                    // Aplica el filtro de color solo al ícono "plus"
+                    plusIcon?.setColorFilter(ContextCompat.getColor(this, R.color.purple), PorterDuff.Mode.SRC_IN)
+
                     val addFragment = AddFragment()
 
                     // Crear un Bundle y pasar argumentos
