@@ -21,7 +21,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.example.wizard.data.model.Sport
-import com.example.wizard.data.remote.api.oddsApiService
+import com.example.wizard.data.remote.api.OddsApiService
 import com.example.wizard.ui.events.EventsFragment
 
 

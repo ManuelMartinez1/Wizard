@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="301dp"
-    android:layout_height="235dp">
+    android:layout_height="170dp">
 
     <!-- Contenido del evento -->
 
     <ImageView
         android:id="@+id/winnerbetBackground"
         android:layout_width="301dp"
-        android:layout_height="236dp"
+        android:layout_height="170dp"
         android:background="@color/event_background_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -38,7 +38,7 @@
         android:layout_marginTop="52dp"
         android:fontFamily="@font/inter_bold"
         android:gravity="center_horizontal"
-        android:text="@string/sport"
+        android:text="Team1"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.188"
@@ -52,7 +52,7 @@
         android:layout_marginTop="52dp"
         android:fontFamily="@font/inter_bold"
         android:gravity="center_horizontal"
-        android:text="@string/sport"
+        android:text="Team2"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.806"
@@ -76,7 +76,7 @@
         layout="@layout/custom_small_button"
         android:layout_width="119dp"
         android:layout_height="38dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
         app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
@@ -87,54 +87,10 @@
         layout="@layout/custom_small_button"
         android:layout_width="119dp"
         android:layout_height="38dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
         app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
         app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <include
-        android:id="@+id/betbtn3"
-        layout="@layout/custom_small_button"
-        android:layout_width="119dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
-        app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
-        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
-
-    <include
-        android:id="@+id/betbtn4"
-        layout="@layout/custom_small_button"
-        android:layout_width="119dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
-        app:layout_constraintHorizontal_bias="0.912"
-        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
-        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
-
-    <include
-        android:id="@+id/betbtn5"
-        layout="@layout/custom_small_button"
-        android:layout_width="119dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="68dp"
-        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
-        app:layout_constraintHorizontal_bias="0.912"
-        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
-        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
-
-    <include
-        android:id="@+id/betbtn6"
-        layout="@layout/custom_small_button"
-        android:layout_width="119dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="68dp"
-        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
-        app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
-        app:layout_constraintTop_toBottomOf="@+id/betbtn1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

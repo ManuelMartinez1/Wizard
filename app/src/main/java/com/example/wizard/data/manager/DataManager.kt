@@ -1,13 +1,14 @@
 import com.example.wizard.data.model.Event
+import com.example.wizard.data.model.EventOdds
 import com.example.wizard.data.model.Sport
-import com.example.wizard.data.remote.api.oddsApiService
+import com.example.wizard.data.remote.api.OddsApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class DataManager {
 
-    private val apiService: oddsApiService = ServiceGenerator.createService(oddsApiService::class.java)
+    private val apiService: OddsApiService = ServiceGenerator.createService(OddsApiService::class.java)
 
     fun obtenerEventosDesdeAPI(sportKey: String, callback: (List<Event>?, Throwable?) -> Unit) {
         val call = apiService.getEventsForSport(sportKey)
@@ -61,6 +62,22 @@ class DataManager {
             }
 
             override fun onFailure(call: Call<List<Event>>, t: Throwable) {
+                callback(null, t)
+            }
+        })
+    }
+    fun obtenerEventOdds(sportKey: String, eventId: String, callback: (EventOdds?, Throwable?) -> Unit) {
+        val call = apiService.getEventOdds(sportKey, eventId, "draftkings", "h2h,spreads,totals")
+        call.enqueue(object : Callback<EventOdds> {
+            override fun onResponse(call: Call<EventOdds>, response: Response<EventOdds>) {
+                if (response.isSuccessful) {
+                    callback(response.body(), null)
+                } else {
+                    callback(null, Throwable(response.message()))
+                }
+            }
+
+            override fun onFailure(call: Call<EventOdds>, t: Throwable) {
                 callback(null, t)
             }
         })
