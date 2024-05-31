@@ -18,13 +18,12 @@ data class Bookmaker(
 
 data class Market(
     val key: String,
-    val lastUpdate: String,
+    val last_update: String,
     val outcomes: List<Outcome>
 )
 
 data class Outcome(
     val name: String,
-    val description: String,
     val price: Double,
-    val point: Double
+    val point: Double? = null // This is nullable because it might not be present in all outcomes
 )

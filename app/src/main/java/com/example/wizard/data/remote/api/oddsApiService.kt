@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface oddsApiService {
+interface OddsApiService {
     @GET("v4/sports")
     fun getSports(): Call<List<Sport>>
 
@@ -21,16 +21,14 @@ interface oddsApiService {
     @GET("v4/sports/{sport}/events/{eventId}/odds")
     fun getEventById(
         @Path("sport") sportKey: String,
-        @Path("event") eventKey: String
+        @Path("eventId") eventId: String
     ): Call<List<Match>>
 
     @GET("/v4/sports/{sport}/events/{eventId}/odds")
     fun getEventOdds(
         @Path("sport") sportKey: String,
-        @Path("event") eventId: String,
-        @Query("regions") regions: String,
-        @Query("markets") markets: String,
-        @Query("dateFormat") dateFormat: String,
-        @Query("oddsFormat") oddsFormat: String
-    ):Call<EventOdds>
+        @Path("eventId") eventId: String,
+        @Query("bookmakers") bookmakers: String = "draftkings",
+        @Query("markets") markets: String = "h2h,spreads,totals"
+    ): Call<EventOdds>
 }

@@ -24,29 +24,24 @@ class EventAdapter(private val events: List<Event>, private val fragmentManager:
         val event = events[position]
         holder.bind(event)
         holder.itemView.setOnClickListener {
-            navigateToBetFragment(holder.itemView.context, fragmentManager, event)
+            navigateToBetFragment(fragmentManager, event)
         }
     }
 
-    override fun getItemCount(): Int {
-        return events.size
-    }
+    override fun getItemCount(): Int = events.size
 
-    private fun navigateToBetFragment(
-        fragmentManager1: Context,
-        fragmentManager: FragmentManager,
-        event: Event
-    ) {
-        val fragment = BetFragment()
-        val bundle = Bundle()
-        bundle.putString("eventTitle", event.home_team + " vs " + event.away_team)
-        bundle.putString("eventId", event.id)
-        fragment.arguments = bundle
-
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_container, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+    private fun navigateToBetFragment(fragmentManager: FragmentManager, event: Event) {
+        val fragment = BetFragment().apply {
+            arguments = Bundle().apply {
+                putString("sportKey", event.sport_key)
+                putString("eventId", event.id)
+                putString("eventTitle", "${event.home_team} vs ${event.away_team}")
+            }
+        }
+        fragmentManager.beginTransaction()
+            .replace(R.id.frame_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
