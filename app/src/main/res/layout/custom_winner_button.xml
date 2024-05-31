@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="230dp"
     android:layout_height="wrap_content"
-    android:background="@color/recuadro"
+    android:background="@color/button_color_selector"
     android:padding="8dp">
 
     <TextView

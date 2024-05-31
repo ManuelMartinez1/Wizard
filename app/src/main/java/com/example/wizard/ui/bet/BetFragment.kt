@@ -6,21 +6,31 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wizard.R
 import com.example.wizard.data.model.EventOdds
+import com.example.wizard.ui.ticket.TicketFragment
+
 class BetFragment : Fragment() {
 
     private lateinit var loadingProgressBar: ProgressBar
     private lateinit var winnerLayout: View
     private lateinit var handicapLayout: View
     private lateinit var totalsLayout: View
+    private lateinit var circularButton: Button
     private lateinit var presenter: BetPresenter
     private var eventId: String = ""
     private var sportKey: String = ""
+
+    private var selectedWinnerButton: View? = null
+    private var selectedHandicapButton: View? = null
+    private var selectedTotalsButton: View? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +43,7 @@ class BetFragment : Fragment() {
         winnerLayout = view.findViewById(R.id.winnerLayout)
         handicapLayout = view.findViewById(R.id.handicapLayout)
         totalsLayout = view.findViewById(R.id.totalsLayout)
+        circularButton = view.findViewById(R.id.circularButton)
 
         // Initialize presenter
         presenter = BetPresenter(DataManager(), this)
@@ -48,7 +59,20 @@ class BetFragment : Fragment() {
         // Load event odds
         presenter.loadEventOdds(sportKey, eventId)
 
+        // Set circular button click listener
+        circularButton.setOnClickListener {
+            navigateToTicketFragment()
+        }
+
         return view
+    }
+
+    private fun navigateToTicketFragment() {
+        val fragment = TicketFragment()
+        val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     fun showLoading() {
@@ -60,6 +84,52 @@ class BetFragment : Fragment() {
 
     fun hideLoading() {
         loadingProgressBar.visibility = View.GONE
+    }
+
+    private fun updateCircularButtonVisibility() {
+        circularButton.visibility = if (selectedWinnerButton != null || selectedHandicapButton != null || selectedTotalsButton != null) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    private fun setButtonClickListener(button: View, layoutType: String) {
+        button.setOnClickListener {
+            when (layoutType) {
+                "winner" -> {
+                    if (selectedWinnerButton == button) {
+                        button.isSelected = false
+                        selectedWinnerButton = null
+                    } else {
+                        selectedWinnerButton?.isSelected = false
+                        button.isSelected = true
+                        selectedWinnerButton = button
+                    }
+                }
+                "handicap" -> {
+                    if (selectedHandicapButton == button) {
+                        button.isSelected = false
+                        selectedHandicapButton = null
+                    } else {
+                        selectedHandicapButton?.isSelected = false
+                        button.isSelected = true
+                        selectedHandicapButton = button
+                    }
+                }
+                "totals" -> {
+                    if (selectedTotalsButton == button) {
+                        button.isSelected = false
+                        selectedTotalsButton = null
+                    } else {
+                        selectedTotalsButton?.isSelected = false
+                        button.isSelected = true
+                        selectedTotalsButton = button
+                    }
+                }
+            }
+            updateCircularButtonVisibility()
+        }
     }
 
     fun showEventOdds(eventOdds: EventOdds) {
@@ -91,6 +161,9 @@ class BetFragment : Fragment() {
                 rightText1.text = outcomes[0].price.toString()
                 leftText2.text = outcomes[1].name
                 rightText2.text = outcomes[1].price.toString()
+
+                setButtonClickListener(customButton1, "winner")
+                setButtonClickListener(customButton2, "winner")
             }
             winnerLayout.visibility = View.VISIBLE
         } ?: run {
@@ -120,6 +193,9 @@ class BetFragment : Fragment() {
                 rightText1.text = outcomes[0].price.toString()
                 leftText2.text = outcomes[1].point.toString()
                 rightText2.text = outcomes[1].price.toString()
+
+                setButtonClickListener(customButton1, "handicap")
+                setButtonClickListener(customButton2, "handicap")
             }
             handicapLayout.visibility = View.VISIBLE
         } ?: run {
@@ -149,6 +225,9 @@ class BetFragment : Fragment() {
                 rightText1.text = outcomes[0].price.toString()
                 leftText2.text = outcomes[1].point.toString()
                 rightText2.text = outcomes[1].price.toString()
+
+                setButtonClickListener(customButton1, "totals")
+                setButtonClickListener(customButton2, "totals")
             }
             totalsLayout.visibility = View.VISIBLE
         } ?: run {
