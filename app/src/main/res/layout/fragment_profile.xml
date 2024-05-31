@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_black"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".view.Home">
+
 
     <TextView
         android:id="@+id/profile"
@@ -22,6 +23,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="65dp"
@@ -33,6 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.144" />
+
 
     <TextView
         android:id="@+id/inicial_perfil"
@@ -48,6 +52,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
+
     <TextView
         android:id="@+id/nombre_completo"
         android:layout_width="272dp"
@@ -60,8 +65,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.223"
 
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/followingc"
@@ -72,7 +79,7 @@
         android:gravity="center"
         android:text="@string/number"
         android:textColor="@color/texts"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/following"
         app:layout_constraintEnd_toStartOf="@+id/followersc"
         app:layout_constraintHorizontal_bias="0.88"
@@ -80,6 +87,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_default="wrap" />
+
 
     <TextView
         android:id="@+id/betsc"
@@ -90,12 +98,13 @@
         android:gravity="center"
         android:text="@string/number"
         android:textColor="@color/texts"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/followingc"
         app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="wrap" />
+
 
     <TextView
         android:id="@+id/followers"
@@ -113,6 +122,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="wrap" />
 
+
     <TextView
         android:id="@+id/bets"
         android:layout_width="65dp"
@@ -129,6 +139,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="wrap" />
 
+
     <TextView
         android:id="@+id/following"
         android:layout_width="65dp"
@@ -144,6 +155,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_default="wrap" />
 
+
     <TextView
         android:id="@+id/followersc"
         android:layout_width="65dp"
@@ -153,7 +165,7 @@
         android:gravity="center"
         android:text="@string/number"
         android:textColor="@color/texts"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/followers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.864"
@@ -162,4 +174,91 @@
         app:layout_constraintVertical_bias="0.8"
         app:layout_constraintWidth_default="wrap" />
 
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/follow"
+        android:layout_width="360dp"
+        android:layout_height="44dp"
+        android:background="@drawable/follow_button"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/follow"
+        android:textAllCaps="false"
+        android:textColor="@color/texts"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.279" />
+
+
+
+
+    <RadioGroup
+        android:id="@+id/toggle"
+        android:layout_marginTop="10dp"
+        android:layout_width="360dp"
+        android:layout_height="44dp"
+        android:background="@drawable/toggle_bg"
+        android:checkedButton="@id/betsposts"
+        android:fontFamily="@font/inter_bold"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/follow"
+        tools:ignore="MissingConstraints">
+
+
+        <RadioButton
+            android:id="@+id/betsposts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:background="@drawable/toggle_selected"
+            android:button="@null"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:text="Bets"
+            android:textColor="@color/white" />
+
+
+        <RadioButton
+            android:id="@+id/stats"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_selected"
+            android:button="@null"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:text="Stats"
+            android:textColor="@color/white" />
+    </RadioGroup>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="360dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggle" />
+
+
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

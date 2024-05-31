@@ -37,4 +37,5 @@
     <string name="hello_home_fragment">Hello Home fragment</string>
     <string name="apikey">93431bcf5f7d7994a9a97f41af907539</string>
     <string name="sport">League</string>
+    <string name="follow">Follow</string>
 </resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/allbets"
+        android:layout_width="360dp"
+        android:layout_height="150dp"
+        android:src="@drawable/all_bets_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/alltime"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center|left"
+        android:text="All-time"
+        android:textColor="@color/texts"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center|left"
+        android:text="$234.55"
+        android:textColor="@color/verde"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alltime" />
+
+
+    <TextView
+        android:id="@+id/nums"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center|left"
+        android:text="4-0-2"
+        android:textColor="@color/secondary_black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
+
+
+    <TextView
+        android:id="@+id/roi"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center|right"
+        android:text="ROI: 43.5%"
+        android:textColor="@color/texts"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
+
+
+
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="250dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center|left"
+        android:text="Leagues"
+        android:textColor="@color/texts"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allbets" />
+
+
+    <ImageView
+        android:id="@+id/bysport"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="204dp"
+        android:src="@drawable/all_bets_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/sport"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="NBA"
+        android:textColor="@color/texts"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bysport" />
+
+
+    <TextView
+        android:id="@+id/wins"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="2-0-1"
+        android:textColor="@color/secondary_black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bysport" />
+
+
+    <TextView
+        android:id="@+id/qmount"
+        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="$100.01"
+        android:textColor="@color/verde"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bysport" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
