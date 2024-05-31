@@ -45,12 +45,22 @@ class EventAdapter(private val events: List<Event>, private val fragmentManager:
     }
 
     inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val eventTextView: TextView = itemView.findViewById(R.id.eventTextView)
+        private val homeTeamTextView: TextView = itemView.findViewById(R.id.eventTextView)
+        private val awayTeamTextView: TextView = itemView.findViewById(R.id.eventTextView2)
+        private val homeTeamMomioTextView: TextView = itemView.findViewById(R.id.momio)
+        private val awayTeamMomioTextView: TextView = itemView.findViewById(R.id.momio2)
+        private val homeTeamNameTextView: TextView = itemView.findViewById(R.id.equipo)
+        private val awayTeamNameTextView: TextView = itemView.findViewById(R.id.equipo2)
         private val timeTextView: TextView = itemView.findViewById(R.id.timeTextView)
 
         fun bind(event: Event) {
-            val eventText = "${event.home_team} - ${event.away_team}"
-            eventTextView.text = eventText
+            homeTeamTextView.text = event.home_team
+            awayTeamTextView.text = event.away_team
+            homeTeamMomioTextView.text = "000" // Actualizar con el valor correspondiente si está disponible
+            awayTeamMomioTextView.text = "000" // Actualizar con el valor correspondiente si está disponible
+            homeTeamNameTextView.text = event.home_team
+            awayTeamNameTextView.text = event.away_team
+
             val formattedTime = formatTime(event.commence_time)
             timeTextView.text = formattedTime
         }

@@ -1,7 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="353dp"
-    android:layout_height="100dp"
+    android:layout_height="115dp"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:background="?attr/selectableItemBackground"
@@ -16,31 +17,149 @@
         android:src="@drawable/event_background"/>
 
     <!-- Contenido del evento -->
-    <TextView
-        android:id="@+id/eventTextView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/inter_bold"
-        android:gravity="center_horizontal"
-        android:text="@string/sport"
-        android:textColor="@color/texts" />
+        android:layout_height="88dp"
+        android:layout_gravity="center">
 
-    <TextView
-        android:id="@+id/eventTextView2"
-        android:layout_width="93dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/inter_bold"
-        android:gravity="center_horizontal"
-        android:text="@string/sport"
-        android:textColor="@color/texts" />
+        <TextView
+            android:id="@+id/eventTextView"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:text="@string/sport"
+            android:textColor="@color/texts"
+            app:layout_constraintEnd_toStartOf="@+id/vs"
+            app:layout_constraintHorizontal_bias="0.761"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/eventTextView2"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:text="@string/sport"
+            android:textColor="@color/texts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.191"
+            app:layout_constraintStart_toEndOf="@+id/vs"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/vs"
+            android:layout_width="9dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/texts"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/equipobg"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/cuadro"
+            app:layout_constraintEnd_toStartOf="@+id/equipobg2"
+            app:layout_constraintHorizontal_bias="0.356"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventTextView" />
+
+        <ImageView
+            android:id="@+id/equipobg2"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="56dp"
+            android:src="@drawable/cuadro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventTextView2" />
+
+        <TextView
+            android:id="@+id/momio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/equipobg"
+            app:layout_constraintEnd_toEndOf="@+id/equipobg"
+            app:layout_constraintStart_toStartOf="@+id/equipobg"
+            app:layout_constraintTop_toBottomOf="@+id/eventTextView" />
+
+        <TextView
+            android:id="@+id/texto_enmedio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Winner (incl. Overtime)"
+            android:textColor="@color/texts"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/equipobg2"
+            app:layout_constraintStart_toEndOf="@+id/equipobg"
+            app:layout_constraintTop_toBottomOf="@+id/vs" />
+
+
+        <TextView
+            android:id="@+id/momio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/equipobg2"
+            app:layout_constraintEnd_toEndOf="@+id/equipobg2"
+            app:layout_constraintStart_toStartOf="@+id/equipobg2"
+            app:layout_constraintTop_toBottomOf="@+id/eventTextView2" />
+
+        <TextView
+            android:id="@+id/equipo"
+            android:layout_width="40dp"
+            android:layout_height="8dp"
+            android:gravity="center_horizontal"
+            android:text="Team"
+            android:textColor="@color/gris"
+            android:textSize="6sp"
+            app:layout_constraintBottom_toBottomOf="@+id/equipobg"
+            app:layout_constraintEnd_toEndOf="@+id/equipobg"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/equipobg"
+            app:layout_constraintTop_toBottomOf="@+id/momio"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/equipo2"
+            android:layout_width="40dp"
+            android:layout_height="8dp"
+            android:gravity="center_horizontal"
+            android:text="Team"
+            android:textColor="@color/gris"
+            android:textSize="6sp"
+            app:layout_constraintBottom_toBottomOf="@+id/equipobg2"
+            app:layout_constraintEnd_toEndOf="@+id/equipobg2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/equipobg2"
+            app:layout_constraintTop_toBottomOf="@+id/momio2"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
     <TextView
         android:id="@+id/timeTextView"
         android:layout_width="170dp"
-        android:layout_height="39dp"
+        android:layout_height="19dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/inter"
@@ -53,36 +172,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/vs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textColor="@color/texts"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <TextView
-            android:id="@+id/texto_enmedio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Winner (incl. Overtime)"
-            android:textColor="@color/texts"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

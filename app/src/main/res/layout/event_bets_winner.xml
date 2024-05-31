@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="301dp"
+    android:layout_width="360dp"
     android:layout_height="159dp">
 
     <!-- Contenido del evento -->
 
     <ImageView
         android:id="@+id/winnerbetBackground"
-        android:layout_width="301dp"
+        android:layout_width="360dp"
         android:layout_height="159dp"
         android:layout_marginTop="4dp"
         android:background="@color/event_background_color"
