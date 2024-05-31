@@ -12,7 +12,7 @@ import com.example.wizard.R
 import com.example.wizard.ui.add.AddFragment
 import com.example.wizard.ui.home.HomeFragment
 import com.example.wizard.ui.notifications.NotificationsFragment
-import com.example.wizard.ui.profile.Profile
+import com.example.wizard.ui.profile.ProfileFragment
 import com.example.wizard.ui.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -67,7 +67,7 @@ class Orchestrator : AppCompatActivity() {
                 }
 
                 R.id.profile -> {
-                    replaceFragment(Profile())
+                    replaceFragment(ProfileFragment())
                     true
                 }
                 else -> false

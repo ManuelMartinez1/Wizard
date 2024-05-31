@@ -1,4 +1,14 @@
 package com.example.wizard.ui.profile
 
-class ProfileContract {
+interface ProfileContract {
+
+    interface View {
+        fun showBetsFragment()
+        fun showStatsFragment()
+    }
+
+    interface Presenter {
+        fun onBetsSelected()
+        fun onStatsSelected()
+    }
 }
