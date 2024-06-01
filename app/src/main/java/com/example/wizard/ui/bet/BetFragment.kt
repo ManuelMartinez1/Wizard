@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.RecyclerView
 import com.example.wizard.R
 import com.example.wizard.data.model.EventOdds
 import com.example.wizard.ui.ticket.TicketFragment
@@ -24,6 +22,7 @@ class BetFragment : Fragment() {
     private lateinit var handicapLayout: View
     private lateinit var totalsLayout: View
     private lateinit var circularButton: Button
+    private lateinit var titleTeams: TextView
     private lateinit var presenter: BetPresenter
     private var eventId: String = ""
     private var sportKey: String = ""
@@ -32,10 +31,7 @@ class BetFragment : Fragment() {
     private var selectedHandicapButton: View? = null
     private var selectedTotalsButton: View? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_bet, container, false)
 
         // Initialize views
@@ -44,6 +40,7 @@ class BetFragment : Fragment() {
         handicapLayout = view.findViewById(R.id.handicapLayout)
         totalsLayout = view.findViewById(R.id.totalsLayout)
         circularButton = view.findViewById(R.id.circularButton)
+        titleTeams = view.findViewById(R.id.vs)
 
         // Initialize presenter
         presenter = BetPresenter(DataManager(), this)
@@ -54,6 +51,12 @@ class BetFragment : Fragment() {
             eventId = it.getString("eventId", "")
             val eventTitle = it.getString("eventTitle", "")
             // Set event title if needed
+            val teams = eventTitle.split(" vs ")
+            val formattedTeam1 = teams[0].take(3).toUpperCase()
+            val formattedTeam2 = teams[1].take(3).toUpperCase()
+
+            // Set event title with formatted team names
+            titleTeams.text = "$formattedTeam1 - $formattedTeam2"
         }
 
         // Load event odds
@@ -65,6 +68,22 @@ class BetFragment : Fragment() {
         }
 
         return view
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter = BetPresenter(DataManager(), this)
+        arguments?.let {
+            sportKey = it.getString("sportKey", "")
+            eventId = it.getString("eventId", "")
+            val eventTitle = it.getString("eventTitle", "")
+            // Set event title if needed
+        }
+        presenter.loadEventOdds(sportKey, eventId)
+        circularButton.setOnClickListener {
+            navigateToTicketFragment()
+        }
     }
 
     private fun navigateToTicketFragment() {
@@ -201,6 +220,8 @@ class BetFragment : Fragment() {
         } ?: run {
             handicapLayout.visibility = View.GONE
         }
+
+
 
         totalsMarket?.let {
             val outcomes = it.outcomes
