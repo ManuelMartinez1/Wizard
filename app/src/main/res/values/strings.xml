@@ -41,4 +41,5 @@
     <string name="follow">Follow</string>
     <string name="ticket">Ticket</string>
     <string name="money">$</string>
+    <string name="PostBets">Post Bets</string>
 </resources>
