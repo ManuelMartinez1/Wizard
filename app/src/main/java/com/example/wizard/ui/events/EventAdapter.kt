@@ -36,6 +36,8 @@ class EventAdapter(private val events: List<Event>, private val fragmentManager:
                 putString("sportKey", event.sport_key)
                 putString("eventId", event.id)
                 putString("eventTitle", "${event.home_team} vs ${event.away_team}")
+                putString("homeTeam", event.home_team)
+                putString("awayTeam", event.away_team)
             }
         }
         fragmentManager.beginTransaction()

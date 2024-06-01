@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.RecyclerView
 import com.example.wizard.R
 import com.example.wizard.data.model.EventOdds
+import com.example.wizard.data.model.Outcome
 import com.example.wizard.ui.ticket.TicketFragment
 
 class BetFragment : Fragment() {
@@ -26,12 +29,21 @@ class BetFragment : Fragment() {
     private lateinit var presenter: BetPresenter
     private var eventId: String = ""
     private var sportKey: String = ""
+    private var homeTeam: String = ""
+    private var awayTeam: String = ""
 
     private var selectedWinnerButton: View? = null
     private var selectedHandicapButton: View? = null
     private var selectedTotalsButton: View? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    private var winnerOutcome: Outcome? = null
+    private var handicapOutcome: Outcome? = null
+    private var totalsOutcome: Outcome? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_bet, container, false)
 
         // Initialize views
@@ -49,6 +61,8 @@ class BetFragment : Fragment() {
         arguments?.let {
             sportKey = it.getString("sportKey", "")
             eventId = it.getString("eventId", "")
+            homeTeam = it.getString("homeTeam", "")
+            awayTeam = it.getString("awayTeam", "")
             val eventTitle = it.getString("eventTitle", "")
             // Set event title if needed
             val teams = eventTitle.split(" vs ")
@@ -88,10 +102,42 @@ class BetFragment : Fragment() {
 
     private fun navigateToTicketFragment() {
         val fragment = TicketFragment()
+        val bundle = Bundle()
+
+        winnerOutcome?.let {
+            bundle.putString("winnerTeamOne", it.name)
+            bundle.putString("winnerTeamTwo", getOtherTeamName(it.name))
+            bundle.putString("winnerMarket", "Winner (incl. Overtime)")
+            bundle.putString("winnerBet", it.name)
+            bundle.putString("winnerOdd", it.price.toString())
+        }
+
+        handicapOutcome?.let {
+            bundle.putString("handicapTeamOne", it.name)
+            bundle.putString("handicapTeamTwo", getOtherTeamName(it.name))
+            bundle.putString("handicapMarket", "Handicap")
+            bundle.putString("handicapBet", "${it.name} ${it.point}")
+            bundle.putString("handicapOdd", it.price.toString())
+        }
+
+        totalsOutcome?.let {
+            bundle.putString("totalsTeamOne", it.name)
+            bundle.putString("totalsTeamTwo", getOtherTeamName(it.name))
+            bundle.putString("totalsMarket", "Totals")
+            bundle.putString("totalsBet", "${it.name} ${it.point}")
+            bundle.putString("totalsOdd", it.price.toString())
+        }
+
+        fragment.arguments = bundle
+
         val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.frame_container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    private fun getOtherTeamName(selectedTeam: String): String {
+        return if (selectedTeam == homeTeam) awayTeam else homeTeam
     }
 
     fun showLoading() {
@@ -113,37 +159,43 @@ class BetFragment : Fragment() {
         }
     }
 
-    private fun setButtonClickListener(button: View, layoutType: String) {
+    private fun setButtonClickListener(button: View, layoutType: String, outcome: Outcome) {
         button.setOnClickListener {
             when (layoutType) {
                 "winner" -> {
                     if (selectedWinnerButton == button) {
                         button.isSelected = false
                         selectedWinnerButton = null
+                        winnerOutcome = null
                     } else {
                         selectedWinnerButton?.isSelected = false
                         button.isSelected = true
                         selectedWinnerButton = button
+                        winnerOutcome = outcome
                     }
                 }
                 "handicap" -> {
                     if (selectedHandicapButton == button) {
                         button.isSelected = false
                         selectedHandicapButton = null
+                        handicapOutcome = null
                     } else {
                         selectedHandicapButton?.isSelected = false
                         button.isSelected = true
                         selectedHandicapButton = button
+                        handicapOutcome = outcome
                     }
                 }
                 "totals" -> {
                     if (selectedTotalsButton == button) {
                         button.isSelected = false
                         selectedTotalsButton = null
+                        totalsOutcome = null
                     } else {
                         selectedTotalsButton?.isSelected = false
                         button.isSelected = true
                         selectedTotalsButton = button
+                        totalsOutcome = outcome
                     }
                 }
             }
@@ -181,8 +233,8 @@ class BetFragment : Fragment() {
                 leftText2.text = outcomes[1].name
                 rightText2.text = outcomes[1].price.toString()
 
-                setButtonClickListener(customButton1, "winner")
-                setButtonClickListener(customButton2, "winner")
+                setButtonClickListener(customButton1, "winner", outcomes[0])
+                setButtonClickListener(customButton2, "winner", outcomes[1])
             }
             winnerLayout.visibility = View.VISIBLE
         } ?: run {
@@ -213,15 +265,13 @@ class BetFragment : Fragment() {
                 leftText2.text = outcomes[1].point.toString()
                 rightText2.text = outcomes[1].price.toString()
 
-                setButtonClickListener(customButton1, "handicap")
-                setButtonClickListener(customButton2, "handicap")
+                setButtonClickListener(customButton1, "handicap", outcomes[0])
+                setButtonClickListener(customButton2, "handicap", outcomes[1])
             }
             handicapLayout.visibility = View.VISIBLE
         } ?: run {
             handicapLayout.visibility = View.GONE
         }
-
-
 
         totalsMarket?.let {
             val outcomes = it.outcomes
@@ -247,8 +297,8 @@ class BetFragment : Fragment() {
                 leftText2.text = outcomes[1].point.toString()
                 rightText2.text = outcomes[1].price.toString()
 
-                setButtonClickListener(customButton1, "totals")
-                setButtonClickListener(customButton2, "totals")
+                setButtonClickListener(customButton1, "totals", outcomes[0])
+                setButtonClickListener(customButton2, "totals", outcomes[1])
             }
             totalsLayout.visibility = View.VISIBLE
         } ?: run {

@@ -39,4 +39,6 @@
     <string name="sport">League</string>
     <string name="Winner">Winner (incl. Overtime)</string>
     <string name="follow">Follow</string>
+    <string name="ticket">Ticket</string>
+    <string name="money">$</string>
 </resources>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/winnerbetBackground"
+        android:layout_width="match_parent"
+        android:layout_height="159dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/event_background_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/oddview"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/cuadro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.874"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.444" />
+
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="174dp"
+        android:layout_height="36dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/inter"
+        android:hint="@string/money"
+        android:padding="10dp"
+        android:textColor="@color/text_secondary"
+        android:textColorHint="@color/text_secondary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/oddview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Bet"
+        app:layout_constraintVertical_bias="0.523" />
+
+    <TextView
+        android:id="@+id/odd"
+        android:layout_width="52dp"
+        android:layout_height="22dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="team1"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/oddview"
+        app:layout_constraintEnd_toEndOf="@+id/oddview"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="@+id/oddview"
+        app:layout_constraintTop_toTopOf="@+id/oddview"
+        app:layout_constraintVertical_bias="0.444" />
+
+    <TextView
+        android:id="@+id/teamone"
+        android:layout_width="65dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="team1"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/teamtwo"
+        android:layout_width="70dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="team2"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/market"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center_vertical"
+        android:text="Total (incl. Overtime)"
+        android:textColor="@android:color/white"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/winnerbetBackground" />
+
+    <TextView
+        android:id="@+id/Bet"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center_vertical"
+        android:text="Total (incl. Overtime)"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/winnerbetBackground" />
+
+    <TextView
+        android:id="@+id/dash"
+        android:layout_width="34dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center_horizontal"
+        android:text="-"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:background="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="@+id/winnerbetBackground"
+        app:layout_constraintEnd_toEndOf="@+id/winnerbetBackground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/winnerbetBackground"
+        app:layout_constraintTop_toTopOf="@+id/winnerbetBackground"
+        app:layout_constraintVertical_bias="0.255" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
