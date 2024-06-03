@@ -27,14 +27,14 @@
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/toggle_bg"
-        android:checkedButton="@id/betsposts"
+        android:checkedButton="@id/straight"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile">
 
         <RadioButton
-            android:id="@+id/betsposts"
+            android:id="@+id/straight"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -47,7 +47,7 @@
             android:textColor="@color/white" />
 
         <RadioButton
-            android:id="@+id/stats"
+            android:id="@+id/parlay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

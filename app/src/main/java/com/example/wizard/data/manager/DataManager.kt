@@ -1,7 +1,9 @@
+import com.example.wizard.data.model.Bet
 import com.example.wizard.data.model.Event
 import com.example.wizard.data.model.EventOdds
 import com.example.wizard.data.model.Sport
 import com.example.wizard.data.remote.api.OddsApiService
+import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -82,4 +84,45 @@ class DataManager {
             }
         })
     }
+
+    fun obtenerApuestas(callback: (List<Bet>?, Throwable?) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("bets")
+            .get()
+            .addOnSuccessListener { documents ->
+                val bets = documents.map { document ->
+                    Bet(
+                        userName = "", // Placeholder, will be fetched separately
+                        bet = document.getString("bet") ?: "",
+                        market = document.getString("market") ?: "",
+                        odd = document.getDouble("odd") ?: 0.0,
+                        teamOne = document.getString("teamOne") ?: "",
+                        teamTwo = document.getString("teamTwo") ?: "",
+                        userId = document.getString("userId") ?: ""
+                    )
+                }
+                callback(bets, null)
+            }
+            .addOnFailureListener { e ->
+                callback(null, e)
+            }
+    }
+
+    fun obtenerNombreUsuarioPorId(userId: String, callback: (String?, Throwable?) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("users").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val userName = document.getString("nombre")
+                    callback(userName, null)
+                } else {
+                    callback(null, Throwable("User not found"))
+                }
+            }
+            .addOnFailureListener { e ->
+                callback(null, e)
+            }
+    }
+
 }

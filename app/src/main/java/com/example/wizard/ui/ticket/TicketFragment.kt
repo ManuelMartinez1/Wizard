@@ -1,5 +1,6 @@
 package com.example.wizard.ui.ticket
 
+import ParlayFragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.wizard.R
 import com.example.wizard.data.model.Bet
 import com.example.wizard.data.model.Ticket
@@ -22,6 +25,7 @@ class TicketFragment : Fragment() {
     private lateinit var postBetsButton: Button
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+    private lateinit var toggle: RadioGroup
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +41,15 @@ class TicketFragment : Fragment() {
         postBetsButton = view.findViewById(R.id.postbets)
         postBetsButton.setOnClickListener {
             postBets()
+        }
+
+        // Initialize RadioGroup
+        toggle = view.findViewById(R.id.toggle)
+        toggle.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.straight -> navigateToFragment(TicketFragment())
+                R.id.parlay -> navigateToFragment(ParlayFragment())
+            }
         }
 
         // Get ticket data from arguments and display them
@@ -108,74 +121,102 @@ class TicketFragment : Fragment() {
         }
 
         val userId = user.uid
-        val tickets = mutableListOf<Bet>()
+        val userEmail = user.email
 
-        arguments?.let {
-            val winnerTeamOne = it.getString("winnerTeamOne")
-            val winnerTeamTwo = it.getString("winnerTeamTwo")
-            val winnerMarket = it.getString("winnerMarket")
-            val winnerBet = it.getString("winnerBet")
-            val winnerOdd = it.getString("winnerOdd")?.toDouble()
+        // Obtener el nombre del usuario desde Firestore
+        db.collection("users")
+            .whereEqualTo("correo", userEmail)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val userName = documents.documents[0].getString("nombre") ?: "Unknown"
 
-            val handicapTeamOne = it.getString("handicapTeamOne")
-            val handicapTeamTwo = it.getString("handicapTeamTwo")
-            val handicapMarket = it.getString("handicapMarket")
-            val handicapBet = it.getString("handicapBet")
-            val handicapOdd = it.getString("handicapOdd")?.toDouble()
+                    val tickets = mutableListOf<Bet>()
 
-            val totalsTeamOne = it.getString("totalsTeamOne")
-            val totalsTeamTwo = it.getString("totalsTeamTwo")
-            val totalsMarket = it.getString("totalsMarket")
-            val totalsBet = it.getString("totalsBet")
-            val totalsOdd = it.getString("totalsOdd")?.toDouble()
+                    arguments?.let {
+                        val winnerTeamOne = it.getString("winnerTeamOne")
+                        val winnerTeamTwo = it.getString("winnerTeamTwo")
+                        val winnerMarket = it.getString("winnerMarket")
+                        val winnerBet = it.getString("winnerBet")
+                        val winnerOdd = it.getString("winnerOdd")?.toDouble()
 
-            winnerTeamOne?.let {
-                val bet = Bet(
-                    teamOne = winnerTeamOne,
-                    teamTwo = winnerTeamTwo ?: "",
-                    market = winnerMarket ?: "",
-                    bet = winnerBet ?: "",
-                    odd = winnerOdd ?: 0.0,
-                    userId = userId
-                )
-                tickets.add(bet)
-            }
+                        val handicapTeamOne = it.getString("handicapTeamOne")
+                        val handicapTeamTwo = it.getString("handicapTeamTwo")
+                        val handicapMarket = it.getString("handicapMarket")
+                        val handicapBet = it.getString("handicapBet")
+                        val handicapOdd = it.getString("handicapOdd")?.toDouble()
 
-            handicapTeamOne?.let {
-                val bet = Bet(
-                    teamOne = handicapTeamOne,
-                    teamTwo = handicapTeamTwo ?: "",
-                    market = handicapMarket ?: "",
-                    bet = handicapBet ?: "",
-                    odd = handicapOdd ?: 0.0,
-                    userId = userId
-                )
-                tickets.add(bet)
-            }
+                        val totalsTeamOne = it.getString("totalsTeamOne")
+                        val totalsTeamTwo = it.getString("totalsTeamTwo")
+                        val totalsMarket = it.getString("totalsMarket")
+                        val totalsBet = it.getString("totalsBet")
+                        val totalsOdd = it.getString("totalsOdd")?.toDouble()
 
-            totalsTeamOne?.let {
-                val bet = Bet(
-                    teamOne = totalsTeamOne,
-                    teamTwo = totalsTeamTwo ?: "",
-                    market = totalsMarket ?: "",
-                    bet = totalsBet ?: "",
-                    odd = totalsOdd ?: 0.0,
-                    userId = userId
-                )
-                tickets.add(bet)
-            }
-        }
+                        winnerTeamOne?.let {
+                            val bet = Bet(
+                                teamOne = winnerTeamOne,
+                                teamTwo = winnerTeamTwo ?: "",
+                                market = winnerMarket ?: "",
+                                bet = winnerBet ?: "",
+                                odd = winnerOdd ?: 0.0,
+                                userId = userId,
+                                userName = userName
+                            )
+                            tickets.add(bet)
+                        }
 
-        tickets.forEach { bet ->
-            db.collection("bets")
-                .add(bet)
-                .addOnSuccessListener {
-                    Toast.makeText(context, "Bet posted successfully", Toast.LENGTH_SHORT).show()
+                        handicapTeamOne?.let {
+                            val bet = Bet(
+                                teamOne = handicapTeamOne,
+                                teamTwo = handicapTeamTwo ?: "",
+                                market = handicapMarket ?: "",
+                                bet = handicapBet ?: "",
+                                odd = handicapOdd ?: 0.0,
+                                userId = userId,
+                                userName = userName
+                            )
+                            tickets.add(bet)
+                        }
+
+                        totalsTeamOne?.let {
+                            val bet = Bet(
+                                teamOne = totalsTeamOne,
+                                teamTwo = totalsTeamTwo ?: "",
+                                market = totalsMarket ?: "",
+                                bet = totalsBet ?: "",
+                                odd = totalsOdd ?: 0.0,
+                                userId = userId,
+                                userName = userName
+                            )
+                            tickets.add(bet)
+                        }
+                    }
+
+                    tickets.forEach { bet ->
+                        db.collection("bets")
+                            .add(bet)
+                            .addOnSuccessListener {
+                                Toast.makeText(context, "Bet posted successfully", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("TicketFragment", "Error posting bet", e)
+                                Toast.makeText(context, "Failed to post bet", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                } else {
+                    Toast.makeText(context, "User not found", Toast.LENGTH_SHORT).show()
                 }
-                .addOnFailureListener { e ->
-                    Log.e("TicketFragment", "Error posting bet", e)
-                    Toast.makeText(context, "Failed to post bet", Toast.LENGTH_SHORT).show()
-                }
-        }
+            }
+            .addOnFailureListener { e ->
+                Log.e("TicketFragment", "Error getting user", e)
+                Toast.makeText(context, "Error getting user: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun navigateToFragment(fragment: Fragment) {
+        val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
